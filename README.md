@@ -4,6 +4,12 @@ Una tanda (ronda de ahorro) donde las reglas las cumple un contrato inteligente 
 
 Proyecto del bootcamp TESH (hackathon en Stellar Apex).
 
+## Autora
+
+**[Tu nombre completo]**, estudiante de [tu carrera] en el Tecnológico de Estudios Superiores de Huixquilucan (TESH).
+
+Proyecto desarrollado de forma individual: diseño de la idea, contrato inteligente en Soroban, despliegue en Stellar Testnet, página con Freighter y pruebas de la tanda completa.
+
 ## Qué hay en el repositorio
 
 `contracts/tanda` contiene el contrato en Soroban (Rust) con tres funciones: `inicializar` configura la tanda (participantes en orden de turno, monto del aporte y token), `aportar` registra el aporte de un participante y paga el bote automáticamente cuando todos aportaron, y `estado` devuelve todo lo que la pantalla necesita mostrar. También incluye pruebas unitarias.
