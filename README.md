@@ -85,11 +85,11 @@ Abre la dirección que muestra la terminal, conecta Freighter con una cuenta par
 
 ## Entrega en APEX
 
-Dirección del contrato: `C...`
+Dirección del contrato: `CB4COECBW6VK2FLNTMPKRRUJJQFTAJR4YA4K3YI27YFEHQOESFG5CT7N`
 
-Transacción invocada desde la página: `https://stellar.expert/explorer/testnet/tx/...`
+Transacción invocada desde la página: `https://stellar.expert/explorer/testnet/tx/9908798bd774856307933d56a599ced7caf8af4ac60fa45f9996cd53521e8176`
 
-Contrato en Stellar Expert: `https://stellar.expert/explorer/testnet/contract/C...`
+Contrato en Stellar Expert: `https://stellar.expert/explorer/testnet/contract/CB4COECBW6VK2FLNTMPKRRUJJQFTAJR4YA4K3YI27YFEHQOESFG5CT7N`
 
 ## Errores del contrato
 
