@@ -35,6 +35,12 @@ En esta tanda digital, el que guarda el dinero y aplica las reglas es un contrat
 - **Página:** HTML, CSS y JavaScript con Vite, Stellar SDK y Freighter API.
 - **Herramientas:** Stellar CLI para compilar, desplegar e inicializar el contrato; Stellar Expert para verificar las transacciones.
 
+   ## Tecnologías
+
+   - **Contrato:** Rust con Soroban SDK, desplegado en Stellar Testnet.
+   - **Página:** HTML, CSS y JavaScript con Vite, Stellar SDK y Freighter API.
+   - **Herramientas:** Stellar CLI para compilar, desplegar e inicializar el contrato; Stellar Expert para verificar las transacciones.
+
 ## Requisitos
 
 Rust 1.91 o más reciente (instálalo con rustup), el target de WebAssembly (`rustup target add wasm32v1-none`), Stellar CLI (guía oficial: https://developers.stellar.org/docs/tools/cli/install-cli), Node.js 20 o más reciente, y la extensión Freighter en el navegador, configurada en **Testnet**.
@@ -42,8 +48,8 @@ Rust 1.91 o más reciente (instálalo con rustup), el target de WebAssembly (`ru
 ## 1. Crear la cuenta que despliega
 
 ```bash
-stellar keys generate omar --network testnet --fund
-stellar keys address omar
+stellar keys generate Damaris --network testnet --fund
+stellar keys address Damaris
 ```
 
 ## 2. Probar y compilar el contrato
@@ -60,7 +66,7 @@ El comando `build` imprime la ruta del archivo `.wasm`. Normalmente es `target/w
 ```bash
 stellar contract deploy \
   --wasm target/wasm32v1-none/release/tanda.wasm \
-  --source omar \
+  --source Damaris \
   --network testnet \
   --alias tanda
 ```
@@ -80,20 +86,20 @@ stellar contract id asset --asset native --network testnet
 Luego inicializa la tanda. El aporte va en stroops: 1 XLM = 10,000,000, así que 10 XLM = 100000000.
 
 ```bash
-stellar contract invoke --id tanda --source omar --network testnet -- \
+stellar contract invoke --id tanda --source Damaris --network testnet -- \
   inicializar \
-  --admin $(stellar keys address omar) \
+  --admin $(stellar keys address Damaris) \
   --token <DIRECCION_XLM> \
   --aporte 100000000 \
   --participantes '["GAAA...","GBBB...","GCCC..."]'
 ```
 
-En PowerShell de Windows, sustituye `$(stellar keys address omar)` por la dirección G copiada directamente, y escribe la lista así: `--participantes '[\"GAAA...\",\"GBBB...\"]'`.
+En PowerShell de Windows, sustituye `$(stellar keys address Damaris)` por la dirección G copiada directamente, y escribe la lista así: `--participantes '[\"GAAA...\",\"GBBB...\"]'`.
 
 Para revisar que quedó bien:
 
 ```bash
-stellar contract invoke --id tanda --source omar --network testnet -- estado
+stellar contract invoke --id tanda --source Damaris --network testnet -- estado
 ```
 
 ## 5. Correr la página
