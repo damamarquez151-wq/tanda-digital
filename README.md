@@ -29,6 +29,12 @@ En esta tanda digital, el que guarda el dinero y aplica las reglas es un contrat
 
 `frontend` es una página hecha con Vite que se conecta con Freighter, muestra la rueda de turnos y permite aportar. Al aportar se genera la transacción on-chain y la página muestra el link de Stellar Expert.
 
+## Tecnologías
+
+- **Contrato:** Rust con Soroban SDK, desplegado en Stellar Testnet.
+- **Página:** HTML, CSS y JavaScript con Vite, Stellar SDK y Freighter API.
+- **Herramientas:** Stellar CLI para compilar, desplegar e inicializar el contrato; Stellar Expert para verificar las transacciones.
+
 ## Requisitos
 
 Rust 1.91 o más reciente (instálalo con rustup), el target de WebAssembly (`rustup target add wasm32v1-none`), Stellar CLI (guía oficial: https://developers.stellar.org/docs/tools/cli/install-cli), Node.js 20 o más reciente, y la extensión Freighter en el navegador, configurada en **Testnet**.

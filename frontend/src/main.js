@@ -126,6 +126,18 @@ async function esperarConfirmacion(hash) {
   throw new Error("La red tardó demasiado en confirmar. Revisa tu historial en Freighter.");
 }
 
+   async function mostrarSaldo() {
+     if (!miCuenta) return;
+     try {
+       const r = await fetch(`https://horizon-testnet.stellar.org/accounts/${miCuenta}`);
+       const datos = await r.json();
+       const xlm = datos.balances.find((b) => b.asset_type === "native");
+       $("saldo").textContent = `Tu saldo: ${Number(xlm.balance).toLocaleString("es-MX", { maximumFractionDigits: 2 })} XLM`;
+     } catch {
+       $("saldo").textContent = "";
+     }
+   }
+
 // --- Wallet ---------------------------------------------------------------
 async function conectar() {
   const { isConnected } = await freighter.isConnected();
@@ -154,6 +166,7 @@ async function conectar() {
   $("cuenta").textContent = `Conectado como ${miCuenta}`;
   avisar("");
   pintarPanel();
+  mostrarSaldo();
 }
 
 // --- Pintar la pantalla --------------------------------------------------
@@ -238,6 +251,7 @@ async function refrescar(mostrarError = true) {
   try {
     estado = await leerEstado();
     pintarPanel();
+    mostrarSaldo();
   } catch (err) {
     if (mostrarError) avisar(`No se pudo leer la tanda: ${traducirError(err)}`, "error");
   }
