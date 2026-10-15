@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tanda digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="barra">
+      <div>
+        <h1>Tanda digital</h1>
+        <p class="sub">Cada quien aporta, a uno le toca. Todo queda registrado en Stellar Testnet.</p>
+      </div>
+      <button id="btn-conectar" class="btn btn-secundario">Conectar Freighter</button>
+    </header>
+
+    <main class="contenido">
+      <section class="rueda-zona" aria-labelledby="titulo-rueda">
+        <h2 id="titulo-rueda" class="oculto">Turnos de la tanda</h2>
+        <div id="rueda" class="rueda" aria-live="polite">
+          <div class="centro">
+            <p class="bote" id="bote">…</p>
+            <p class="bote-texto" id="bote-texto">Cargando la tanda</p>
+          </div>
+        </div>
+        <p class="ronda" id="ronda"></p>
+        <p class="leyenda">Relleno: ya aportó en esta ronda. Borde dorado: cobra esta ronda.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="titulo-panel">
+        <h2 id="titulo-panel">Tu aporte</h2>
+        <p id="cuenta" class="cuenta">Conecta Freighter para ver tu lugar en la tanda.</p>
+        <p id="situacion" class="situacion"></p>
+        <button id="btn-aportar" class="btn" disabled>Aportar</button>
+        <p id="aviso" class="aviso" role="status"></p>
+
+        <h3>Orden de turnos</h3>
+        <ol id="turnos" class="turnos"></ol>
+
+        <p class="pie">
+          Contrato: <a id="link-contrato" target="_blank" rel="noopener"></a>
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

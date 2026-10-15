@@ -1,0 +1,326 @@
+:root {
+  --papel: #eef2ec;
+  --superficie: #ffffff;
+  --tinta: #17302a;
+  --tenue: #5e716a;
+  --linea: #c9d3cc;
+  --moneda: #e3a21a;
+  --moneda-tinta: #3a2a00;
+  --error: #a8322d;
+  --exito: #2f6b4f;
+  --radio-rueda: min(38vw, 190px);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #0f1c18;
+    --superficie: #16261f;
+    --tinta: #e6eee9;
+    --tenue: #93a69e;
+    --linea: #2f4139;
+    --moneda: #f0b43a;
+    --moneda-tinta: #2a1e00;
+    --error: #ef8a83;
+    --exito: #7fcfa5;
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font: 1rem/1.55 "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  font-stretch: 112%;
+  line-height: 1.1;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 1rem;
+}
+
+.sub {
+  margin: 0.5rem 0 0;
+  color: var(--tenue);
+  max-width: 46ch;
+}
+
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* La rueda: cada participante es un punto alrededor del bote. */
+.rueda-zona {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rueda {
+  position: relative;
+  width: calc(var(--radio-rueda) * 2 + 72px);
+  aspect-ratio: 1;
+  margin: 1rem 0;
+}
+
+.rueda::before {
+  content: "";
+  position: absolute;
+  inset: 36px;
+  border: 2px dashed var(--linea);
+  border-radius: 50%;
+}
+
+.centro {
+  position: absolute;
+  inset: 25%;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--moneda);
+  color: var(--moneda-tinta);
+  box-shadow: inset 0 0 0 8px color-mix(in srgb, var(--moneda) 70%, #000 30%);
+  padding: 1rem;
+}
+
+.bote {
+  margin: 0;
+  font-family: "Archivo", system-ui, sans-serif;
+  font-stretch: 112%;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  line-height: 1;
+}
+
+.bote-texto {
+  margin: 0.4rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.3;
+}
+
+.lugar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  transform: rotate(calc(var(--i) / var(--n) * 360deg - 90deg))
+    translate(var(--radio-rueda))
+    rotate(calc(var(--i) / var(--n) * -360deg + 90deg));
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--tinta);
+  background: var(--superficie);
+  font-weight: 700;
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+
+.lugar.pagado {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.lugar.cobra {
+  border-color: var(--moneda);
+  border-width: 4px;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+}
+
+.lugar.cobro {
+  opacity: 0.45;
+}
+
+.lugar.yo::after {
+  content: "tú";
+  position: absolute;
+  bottom: -1.4rem;
+  font-size: 0.8rem;
+  color: var(--tinta);
+}
+
+.ronda {
+  margin: 1rem 0 0;
+  color: var(--tenue);
+  text-align: center;
+}
+
+/* Panel de acciones */
+.panel {
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 6px;
+  padding: 1.75rem;
+  align-self: start;
+}
+
+.cuenta {
+  color: var(--tenue);
+  overflow-wrap: anywhere;
+}
+
+.situacion {
+  font-size: 1.15rem;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 700;
+  border: 2px solid var(--tinta);
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--tinta);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--moneda);
+  outline-offset: 3px;
+}
+
+.aviso {
+  min-height: 1.5em;
+  margin: 1rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.aviso.error {
+  color: var(--error);
+}
+
+.aviso.exito {
+  color: var(--exito);
+}
+
+.turnos {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  counter-reset: turno;
+}
+
+.turnos li {
+  counter-increment: turno;
+  display: grid;
+  grid-template-columns: 2rem 1fr auto;
+  gap: 0.5rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--linea);
+  font-size: 0.95rem;
+}
+
+.turnos li::before {
+  content: counter(turno);
+  font-weight: 700;
+}
+
+.turnos li > span:first-child {
+  white-space: nowrap;
+}
+
+.leyenda {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--tenue);
+  text-align: center;
+}
+
+.turnos .estado-turno {
+  color: var(--tenue);
+}
+
+.turnos .actual {
+  font-weight: 700;
+}
+
+.pie {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--tenue);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+  :root {
+    --radio-rueda: min(34vw, 150px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lugar {
+    transition: none;
+  }
+}
