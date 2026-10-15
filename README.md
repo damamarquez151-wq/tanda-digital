@@ -109,6 +109,22 @@ La tanda se configuró con 2 participantes y un aporte de 10 XLM por ronda.
 
 En el segundo link se pueden ver los dos movimientos: el aporte que entra al contrato y el pago del bote que sale hacia el participante 1, sin que nadie tuviera que repartir el dinero a mano.
 
+## Capturas
+
+La página después de completar la ronda 1: el participante 1 ya cobró y ahora le toca al participante 2.
+
+![Página de la tanda en la ronda 2](docs/pagina-ronda-2.png)
+
+![Panel de aporte y orden de turnos](docs/panel-aporte.png)
+
+Primera aportación, invocada desde la página con Freighter:
+
+![Transacción del primer aporte en Stellar Expert](docs/tx-aporte-1.png)
+
+Segunda aportación: el contrato recibe el aporte y paga el bote de 20 XLM al participante 1 en la misma transacción.
+
+![Transacción con el pago del bote en Stellar Expert](docs/tx-pago-bote.png)
+
 ## Errores del contrato
 
 | Código | Significado |
