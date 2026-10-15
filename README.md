@@ -91,6 +91,18 @@ Transacción invocada desde la página: `https://stellar.expert/explorer/testnet
 
 Contrato en Stellar Expert: `https://stellar.expert/explorer/testnet/contract/CB4COECBW6VK2FLNTMPKRRUJJQFTAJR4YA4K3YI27YFEHQOESFG5CT7N`
 
+## Demo: ronda 1 completa
+
+La tanda se configuró con 2 participantes y un aporte de 10 XLM por ronda.
+
+1. El participante 1 (`GBOM...ATXO`) aportó 10 XLM desde la página:
+   https://stellar.expert/explorer/testnet/tx/9908798bd774856307933d56a599ced7caf8af4ac60fa45f9996cd53521e8176
+
+2. El participante 2 (`GA75...JENY`) aportó 10 XLM desde la página. Como fue el último en aportar, en esa misma transacción el contrato pagó automáticamente el bote de 20 XLM al participante 1 y avanzó a la ronda 2:
+   https://stellar.expert/explorer/testnet/tx/26cd553601cbcc98ad8058c10a4bec0d02472c2aae36502705c94d51ce0e76bf
+
+En el segundo link se pueden ver los dos movimientos: el aporte que entra al contrato y el pago del bote que sale hacia el participante 1, sin que nadie tuviera que repartir el dinero a mano.
+
 ## Errores del contrato
 
 | Código | Significado |
